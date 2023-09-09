@@ -65,7 +65,7 @@ class Bola {
   abscisaBola;
   ordenadaBola;
   radioBola = 15;
-  velocidadX = -10;
+  velocidadX = -15;
   velocidadY = 0;
   movBola;
 
@@ -115,7 +115,7 @@ class Bola {
           this.abscisaBola < 0 ||
           this.abscisaBola > document.body.clientWidth - this.radioBola
         ) {
-          marcador.sumarPunto(this.abscisaBola < 0 ? 2 : 1);
+          marcador.sumarPunto(this.abscisaBola <  0 ? 2 : 1);
           bola.eliminarBola();
         }
         this.elemento.style.left = this.abscisaBola + "px";
@@ -160,7 +160,7 @@ class Bola {
 class Marcador {
   puntosJugador1 = 0;
   puntosJugador2 = 0;
-  puntuacionMaxima = 2;
+  puntuacionMaxima = 5;
 
   constructor() {
     this.elemento = document.createElement("p");
@@ -170,7 +170,7 @@ class Marcador {
   }
 
   actualizarMarcador() {
-    this.elemento.textContent =
+    this.elemento.textContent = 
       this.puntosJugador1 + " - " + this.puntosJugador2;
   }
 
@@ -190,7 +190,10 @@ class Marcador {
     }
   }
   ganar(jugador) {
-    mensajeElement.textContent = "Ganador - Jugador:" + jugador;
+    if (jugador == 2) 
+    mensajeElement.textContent = "LUCÍA es la GANADORA";
+  else
+    mensajeElement.textContent = "Jugador:" + jugador + " *** GANA ***";
     estadoJuego = "FIN";
   }
 

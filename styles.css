@@ -1,7 +1,7 @@
 body {
   margin: 0;
   color: white;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #zonaJuego {
@@ -24,6 +24,7 @@ body {
   width: 20px;
   height: 200px;
   background-color: white;
+  border-radius: 5%;
 }
 
 .bola{
@@ -37,7 +38,7 @@ body {
 #marcador {
   padding-top: 50px;
   text-align: center;
-  font-size: 5rem;
+  font-size: 4rem;
 }
 p{
   margin: auto;
