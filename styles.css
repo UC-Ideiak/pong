@@ -33,6 +33,7 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: white;
+  overflow:hidden;
 }
 
 #marcador {
@@ -49,14 +50,15 @@ p{
   width: 100%;
   text-align: center;
   top: 50%;
-  font-size: 2rem;
+  font-size: 3rem;
 
 }
 
 #instrucciones{
   position: absolute;
   width: 100%;
-  bottom: 10px;
+  bottom: 5px;
+  padding-bottom: 20px;
   text-align: center;
   font-size: 1rem;
 }

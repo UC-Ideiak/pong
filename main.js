@@ -65,7 +65,7 @@ class Bola {
   abscisaBola;
   ordenadaBola;
   radioBola = 15;
-  velocidadX = -15;
+  velocidadX = -20 ;
   velocidadY = 0;
   movBola;
 
@@ -83,54 +83,52 @@ class Bola {
   mover() {
     if (!this.movBola) {
       this.movBola = setInterval(() => {
-        // Movimiento horizontal
-        this.abscisaBola = this.abscisaBola + this.velocidadX;
-
         // Choque con paletas
 
         // Paleta JUgador 1
         if (
-          this.abscisaBola < 0 + jugador1.anchoPaleta &&
-          this.ordenadaBola + this.radioBola > jugador1.ordenada &&
-          this.ordenadaBola + this.radioBola <
-            jugador1.ordenada + jugador1.longitud
+          this.abscisaBola < jugador1.anchoPaleta &&
+          this.ordenadaBola + this.radioBola*2 > jugador1.ordenada &&
+          this.ordenadaBola < jugador1.ordenada + jugador1.longitud
         ) {
           this.velocidadX = this.velocidadX * -1;
-          this.velocidadY += this.rebote(jugador1);
+          this.velocidadY -= this.rebote(jugador1);
         }
 
         // Paleta Jugador 2
         if (
           this.abscisaBola + this.radioBola * 2 >
             document.body.clientWidth - jugador2.anchoPaleta &&
-          this.ordenadaBola + this.radioBola > jugador2.ordenada &&
-          this.ordenadaBola + this.radioBola <
-            jugador2.ordenada + jugador2.longitud
+          this.ordenadaBola + this.radioBola*2 > jugador2.ordenada &&
+          this.ordenadaBola  < jugador2.ordenada + jugador2.longitud
         ) {
           this.velocidadX = this.velocidadX * -1;
-          this.velocidadY += this.rebote(jugador2);
+          this.velocidadY -= this.rebote(jugador2);
         }
+
         // Meter punto
         if (
           this.abscisaBola < 0 ||
-          this.abscisaBola > document.body.clientWidth - this.radioBola
+          this.abscisaBola > document.body.clientWidth - this.radioBola * 2
         ) {
-          marcador.sumarPunto(this.abscisaBola <  0 ? 2 : 1);
+          marcador.sumarPunto(this.abscisaBola < 0 ? 2 : 1);
           bola.eliminarBola();
         }
+        // Movimiento horizontal
+        this.abscisaBola = this.abscisaBola + this.velocidadX;
         this.elemento.style.left = this.abscisaBola + "px";
 
         // Movimiento vertical
-        this.ordenadaBola = this.ordenadaBola + this.velocidadY;
-
         if (
           this.ordenadaBola < 0 ||
           this.ordenadaBola > document.body.clientHeight - this.radioBola * 2
         ) {
           this.velocidadY = this.velocidadY * -1;
-        }
+          
+        } 
+        this.ordenadaBola = this.ordenadaBola + this.velocidadY;
         this.elemento.style.top = this.ordenadaBola + "px";
-      }, 20);
+      }, 19);
     }
   }
 
@@ -149,11 +147,11 @@ class Bola {
   }
 
   rebote(jugador) {
-    let zonaRebote =
+    const zonaRebote =
       jugador.ordenada +
       jugador.longitud / 2 -
       (this.ordenadaBola + this.radioBola);
-    return zonaRebote / 10;
+    return zonaRebote / 10 ;
   }
 }
 
@@ -170,7 +168,7 @@ class Marcador {
   }
 
   actualizarMarcador() {
-    this.elemento.textContent = 
+    this.elemento.textContent =
       this.puntosJugador1 + " - " + this.puntosJugador2;
   }
 
@@ -190,10 +188,8 @@ class Marcador {
     }
   }
   ganar(jugador) {
-    if (jugador == 2) 
-    mensajeElement.textContent = "LUCÍA es la GANADORA";
-  else
-    mensajeElement.textContent = "Jugador:" + jugador + " *** GANA ***";
+    if (jugador == 2) mensajeElement.textContent = "LUCÍA es la GANADORA";
+    else mensajeElement.textContent = "Jugador: " + jugador + " *** GANA ***";
     estadoJuego = "FIN";
   }
 
