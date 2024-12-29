@@ -7,7 +7,6 @@ let estadoJuego = "PAUSA";
 
 class Paleta {
   elemento;
-
   ordenada = 0;
   velocidad = 15;
   movPaleta;
@@ -61,7 +60,6 @@ class Paleta {
 
 class Bola {
   elemento;
-
   abscisaBola;
   ordenadaBola;
   radioBola = 15;
