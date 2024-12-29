@@ -13,11 +13,12 @@ body {
 
 #zonaJuego .paleta:nth-of-type(1) {
   left: 0;
+  background-color: rgb(156, 246, 225);
 }
 
 #zonaJuego .paleta:nth-of-type(2) {
   right: 0;
-  background-color: blue;
+  background-color: rgb(148, 148, 233);
 }
 
 .paleta {
